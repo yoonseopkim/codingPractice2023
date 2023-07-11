@@ -1,7 +1,12 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        import re
-        s = s.lower()
-        s = re.sub(r"[^\uAC00-\uD7A3a-zA-Z0-9]", "", s)
-        s_reverse = s[::-1]
-        return s == s_reverse
+        strs = []
+        for char in s:
+            if char.isalnum():
+                strs.append(char.lower())
+
+        while len(strs) > 1:
+            if strs.pop(0) != strs.pop():
+                return False
+
+        return True
